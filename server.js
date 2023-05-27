@@ -1,18 +1,5 @@
-const express = require('express');
 const PORT = 3000
-const cors = require('cors')
-
-const server = express()
-server.use(express.json())
-server.use(cors({
-    origin:'*'
-}))
-server.get('/',(req,res)=>{
-    res.json({
-        name:'Naveen'
-    })
-})
-const http = require('http').Server(server)
+const http = require('http').Server()
 const io = require('socket.io')(http, {
     cors: {
         origin: "*",
