@@ -1,6 +1,14 @@
-const PORT = 3000
+require('dotenv').config()
+const PORT = process.env.PORT || 3000
 const express = require('express');
+const mongoose = require('mongoose');
+
 const { v4: uuidv4 } = require('uuid');
+mongoose.connect(process.env.MONGO_URL)
+  .then(() => console.log('Connected!'))
+  .catch(err=>{
+    console.log({err});
+  })
 const app = express()
 app.use(express.json())
 const userObj = {
